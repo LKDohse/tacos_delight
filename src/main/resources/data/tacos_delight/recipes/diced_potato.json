@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "farmersdelight:potato"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  },
+  "result": [
+    {
+      "item": "tacos_delight:diced_potato",
+      "count": 2
+    }
+  ]
+}

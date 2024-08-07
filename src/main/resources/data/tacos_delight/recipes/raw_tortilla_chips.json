@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "tacos_delight:flour_tortilla"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  },
+  "result": [
+    {
+      "item": "tacos_delight:raw_tortilla_chips",
+      "count": 2
+    }
+  ]
+}
