@@ -8,8 +8,10 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
@@ -22,12 +24,22 @@ public class ModItems {
     public static LinkedHashSet<Supplier<Item>> CREATIVE_TAB_ITEMS = Sets.newLinkedHashSet();
     public static LinkedHashSet<Supplier<Item>> INGREDIENTS_TAB_ITEMS = Sets.newLinkedHashSet();
 
-    public static Item.Properties bowlFoodItem(FoodProperties food) {
-        return new Item.Properties().food(food).craftRemainder(Items.BOWL).stacksTo(16);
+    public static Supplier<Item> getTaco(@NotNull FillingType filling){
+        return switch (filling) {
+            case BEEF -> BEEF_TACO;
+            case CHICKEN -> CHICKEN_TACO;
+            case POTATO -> POTATO_TACO;
+            case CHEESE -> POTATO_TACO;
+        };
     }
 
-    public static Item.Properties drinkItem() {
-        return new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
+    public static Supplier<Item> getBurrito(FillingType filling){
+        return switch (filling) {
+            case BEEF -> BEEF_BURRITO;
+            case CHICKEN -> CHICKEN_BURRITO;
+            case POTATO -> POTATO_BURRITO;
+            case CHEESE -> POTATO_TACO;
+        };
     }
 
     public enum FillingType{
@@ -119,6 +131,16 @@ public class ModItems {
     public static final Item.Properties CHEESE_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.CHEESE));
     public static final Item.Properties CHICKEN_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.CHICKEN));
     public static final Item.Properties BEEF_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.BEEF));
+
+    //Taco Boxes
+    //public static final Item.Properties BEEF_TACO_BOX_PROPERTIES = new Item.Properties();
+    //public static final Item.Properties CHICKEN_TACO_BOX_PROPERTIES = new Item.Properties();
+    //public static final Item.Properties POTATO_TACO_BOX_PROPERTIES = new Item.Properties();
+
+    //Burrito Boxes
+    public static final Item.Properties BEEF_BURRITO_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties CHICKEN_BURRITO_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties POTATO_BURRITO_BOX_PROPERTIES = new Item.Properties();
 
     // Item Registration
     public static final Supplier<Item> TACO_SEASONING = ModItemRegistration.start().register("taco_seasoning",
@@ -284,5 +306,17 @@ public class ModItems {
     public static final Supplier<Item> BEEF_QUESADILLA = ModItemRegistration.start().register("beef_quesadilla", () -> new Item(BEEF_QUESADILLA_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> POTATO_BURRITO_BOX = ModItemRegistration.start().register("potato_burrito_box", () -> new BlockItem(ModBlockItems.POTATO_BURRITO_BOX_BLOCK.get(),POTATO_BURRITO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> BEEF_BURRITO_BOX = ModItemRegistration.start().register("beef_burrito_box", () -> new BlockItem(ModBlockItems.BEEF_BURRITO_BOX_BLOCK.get(),BEEF_BURRITO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> CHICKEN_BURRITO_BOX = ModItemRegistration.start().register("chicken_burrito_box", () -> new BlockItem(ModBlockItems.CHICKEN_BURRITO_BOX_BLOCK.get(),CHICKEN_BURRITO_BOX_PROPERTIES))
+            .withCreativeTab()
             .complete();
 }

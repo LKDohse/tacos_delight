@@ -1,5 +1,6 @@
 package com.electricbudge.tacosdelight;
 
+import com.electricbudge.tacosdelight.registry.ModBlockItems;
 import com.electricbudge.tacosdelight.registry.ModCreativeTabs;
 import com.electricbudge.tacosdelight.registry.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -15,6 +16,7 @@ public class TacosDelight implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Tacos Delight is initializing!");
 		ModItems.ITEMS.register();
+		ModBlockItems.BLOCKS.register();
 		ModCreativeTabs.CREATIVE_TABS.register();
 	}
 }
