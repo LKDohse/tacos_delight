@@ -1,6 +1,16 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/raw_taco_chicken"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "farmersdelight:chicken_cuts"
+    },
+    {
+      "item": "tacos_delight:taco_seasoning"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:raw_taco_chicken",
+    "count": 1
+  },
+  "experience": 0.5
 }

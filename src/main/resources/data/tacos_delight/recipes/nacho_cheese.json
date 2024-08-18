@@ -1,6 +1,19 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/nacho_cheese"
-  }
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "tacos_delight:shredded_cheese"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:nacho_cheese",
+    "count": 4
+  },
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200
 }

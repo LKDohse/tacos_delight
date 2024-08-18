@@ -1,6 +1,19 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/tortilla_dough"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:tortilla_dough",
+    "count": 1
+  },
+  "experience": 0.5
 }

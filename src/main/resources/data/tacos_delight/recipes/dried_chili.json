@@ -1,6 +1,10 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/dried_chili"
-  }
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "expandeddelight:chili_pepper"
+  },
+  "result": "tacos_delight:dried_chili",
+  "experience": 1.0,
+  "cookingtime": 400
 }

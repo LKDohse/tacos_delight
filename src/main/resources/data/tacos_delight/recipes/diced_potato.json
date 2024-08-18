@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "farmersdelight:potato"
+      "item": "casualness_delight:potato_slice"
     }
   ],
   "tool": {
@@ -11,7 +11,7 @@
   "result": [
     {
       "item": "tacos_delight:diced_potato",
-      "count": 2
+      "count": 4
     }
   ]
 }

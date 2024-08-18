@@ -1,6 +1,10 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/dried_onion"
-  }
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "farmersdelight:onion"
+  },
+  "result": "tacos_delight:dried_onion",
+  "experience": 1.0,
+  "cookingtime": 400
 }

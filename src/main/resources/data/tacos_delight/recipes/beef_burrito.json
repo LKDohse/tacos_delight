@@ -1,20 +1,31 @@
 {
-  "type": "minecraft:crafting",
-  "category": "food",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": {
-        "tag": "tacos_delight:cheese_slice"
-      }
+      "item": "tacos_delight:taco_beef"
+    },
+    {
+      "item": "tacos_delight:flour_tortilla"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "tacos_delight:diced_tomatoes"
+    },
+    {
+      "item": "tacos_delight:shredded_cheese"
+    },
+    {
+      "item": "farmersdelight:cooked_rice"
+    },
+    {
+      "item": "tacos_delight:sour_cream"
     }
   ],
-  "tool": {
-    "tag": "farmersdelight:tools/knives"
+  "result": {
+    "item": "tacos_delight:beef_burrito",
+    "count": 1
   },
-  "result": [
-    {
-      "item": "tacos_delight:shredded_cheese",
-      "count": 2
-    }
-  ]
+  "experience": 5.0
 }

@@ -1,6 +1,8 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/fried_fiesta_potatoes"
-  }
+  "type": "casualness_delight:deep_frying",
+  "ingredient": {
+    "item": "tacos_delight:uncooked_fiesta_potatoes"
+  },
+  "cookingtime": 400,
+  "result": "tacos_delight:fried_fiesta_potatoes"
 }

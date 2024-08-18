@@ -1,6 +1,28 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/potato_burrito"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tacos_delight:fried_fiesta_potatoes"
+    },
+    {
+      "item": "tacos_delight:flour_tortilla"
+    },
+    {
+      "item": "tacos_delight:shredded_cheese"
+    },
+    {
+      "item": "tacos_delight:nacho_cheese"
+    },
+    {
+      "item": "farmersdelight:cooked_rice"
+    },
+    {
+      "item": "tacos_delight:sour_cream"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:potato_burrito",
+    "count": 1
+  },
+  "experience": 5.0
 }

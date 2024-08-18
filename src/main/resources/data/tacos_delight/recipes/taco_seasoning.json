@@ -1,6 +1,19 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/taco_seasoning"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tacos_delight:dried_chili"
+    },
+    {
+      "item": "tacos_delight:dried_onion"
+    },
+    {
+      "item": "expandeddelight:ground_salt"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:taco_seasoning",
+    "count": 4
+  },
+  "experience": 1.0
 }

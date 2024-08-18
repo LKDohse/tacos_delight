@@ -1,6 +1,8 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/chicken_quesadilla"
-  }
+  "type": "minecraft:campfire_cooking",
+  "ingredient":
+    {
+      "item": "tacos_delight:uncooked_chicken_quesadilla"
+    },
+  "result": "tacos_delight:chicken_quesadilla"
 }

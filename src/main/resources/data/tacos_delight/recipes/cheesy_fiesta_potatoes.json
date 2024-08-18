@@ -1,6 +1,22 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/cheesy_fiesta_potatoes"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tacos_delight:sour_cream"
+    },
+    {
+      "item": "tacos_delight:nacho_cheese"
+    },
+    {
+      "item": "tacos_delight:fried_fiesta_potatoes"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:cheesy_fiesta_potatoes",
+    "count": 1
+  },
+  "experience": 3.0
 }

@@ -108,6 +108,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation "curse.maven:farmersdelightrefabricated-993166:5568031"
+	modImplementation "curse.maven:moredelight-964408:5275036"
+	modImplementation "curse.maven:casualnessdelight-909519:5240138"
+	modImplementation "curse.maven:expandeddelight-620770:5281271"
 
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}")))
 	annotationProcessor 'net.fabricmc:sponge-mixin:0.12.5+mixin.0.8.5'
@@ -119,6 +122,7 @@ dependencies {
 		include(modApi("io.github.fabricators_of_create.Porting-Lib:$module:$port_lib_version"))
 	}
 	modLocalRuntime("com.terraformersmc:modmenu:${project.modmenu_version}")
+	modImplementation include("dev.draylar.omega-config:omega-config-base:${project.omega_version}")
 
 	modCompileOnly("com.blamejared.crafttweaker:CraftTweaker-fabric-1.20.1:${crafttweaker_version}")
 

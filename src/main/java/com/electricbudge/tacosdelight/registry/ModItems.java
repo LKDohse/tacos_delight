@@ -9,6 +9,9 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
+import vectorwing.farmersdelight.common.item.DrinkableItem;
 
 import java.util.LinkedHashSet;
 import java.util.function.Supplier;
@@ -18,6 +21,14 @@ public class ModItems {
     public static final LazyRegistrar<Item> ITEMS = LazyRegistrar.create(BuiltInRegistries.ITEM, TacosDelight.MODID);
     public static LinkedHashSet<Supplier<Item>> CREATIVE_TAB_ITEMS = Sets.newLinkedHashSet();
     public static LinkedHashSet<Supplier<Item>> INGREDIENTS_TAB_ITEMS = Sets.newLinkedHashSet();
+
+    public static Item.Properties bowlFoodItem(FoodProperties food) {
+        return new Item.Properties().food(food).craftRemainder(Items.BOWL).stacksTo(16);
+    }
+
+    public static Item.Properties drinkItem() {
+        return new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
+    }
 
     public enum FillingType{
         BEEF,
@@ -56,6 +67,7 @@ public class ModItems {
     public static final FoodProperties BASIC_INGREDIENT_PROPERTIES = new FoodProperties.Builder().nutrition(1).fast().build();
     public static final FoodProperties RAW_INGREDIENT_PROPERTIES = new FoodProperties.Builder().nutrition(2).saturationMod(1.2F).effect(new MobEffectInstance(MobEffects.HUNGER), 0.30F).build();
     public static final FoodProperties RAW_MEAT_PROPERTIES = new FoodProperties.Builder().nutrition(2).meat().saturationMod(1.2F).effect(new MobEffectInstance(MobEffects.HUNGER), 0.30F).build();
+    public static final FoodProperties MEAT_PROPERTIES = new FoodProperties.Builder().nutrition(4).meat().saturationMod(1.2F).build();
     public static final FoodProperties UNFINISHED_FOOD_PROPERTIES = new FoodProperties.Builder().nutrition(3).saturationMod(1.2F).build();
 
     //Uncategorized
@@ -66,9 +78,10 @@ public class ModItems {
     public static final Item.Properties DRIED_CHILI_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties DRIED_ONION_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties FLOUR_TORTILLA_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
-    public static final Item.Properties NACHO_CHEESE_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
+    public static final Item.Properties NACHO_CHEESE_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
+    public static final Item.Properties SHREDDED_CHEESE_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties DICED_POTATO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
-    public static final Item.Properties SOUR_CREAM_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
+    public static final Item.Properties SOUR_CREAM_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
     public static final Item.Properties RAW_TORTILLA_CHIPS_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties TORTILLA_CHIPS_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties UNCOOKED_FIESTA_POTATOES_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
@@ -79,14 +92,18 @@ public class ModItems {
     public static final Item.Properties RAW_TACO_CHICKEN_PROPERTIES = new Item.Properties().food(RAW_MEAT_PROPERTIES);
     public static final Item.Properties TORTILLA_DOUGH_PROPERTIES = new Item.Properties().food(RAW_INGREDIENT_PROPERTIES);
 
+    //Cooked Ingredients
+    public static final Item.Properties TACO_BEEF_PROPERTIES = new Item.Properties().food(MEAT_PROPERTIES);
+    public static final Item.Properties TACO_CHICKEN_PROPERTIES = new Item.Properties().food(MEAT_PROPERTIES);
+
     //Unfinished Foods
     public static final Item.Properties UNCOOKED_CHEESE_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
     public static final Item.Properties UNCOOKED_CHICKEN_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
     public static final Item.Properties UNCOOKED_BEEF_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
 
     //Sides
-    public static final Item.Properties NACHO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
-    public static final Item.Properties CHEESY_FIESTA_POTATOES_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
+    public static final Item.Properties NACHO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.BOWL).stacksTo(16);
+    public static final Item.Properties CHEESY_FIESTA_POTATOES_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.BOWL).stacksTo(16);
 
     //Tacos
     public static final Item.Properties POTATO_TACO_PROPERTIES = new Item.Properties().food(BuildTacoProperties(FillingType.POTATO));
@@ -134,7 +151,12 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
-    public static final Supplier<Item> NACHO_CHEESE = ModItemRegistration.start().register("nacho_cheese", () -> new Item(NACHO_CHEESE_PROPERTIES))
+    public static final Supplier<Item> NACHO_CHEESE = ModItemRegistration.start().register("nacho_cheese", () -> new DrinkableItem(NACHO_CHEESE_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> SHREDDED_CHEESE = ModItemRegistration.start().register("shredded_cheese", () -> new Item(SHREDDED_CHEESE_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
             .complete();
@@ -144,7 +166,7 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
-    public static final Supplier<Item> SOUR_CREAM = ModItemRegistration.start().register("sour_cream", () -> new Item(SOUR_CREAM_PROPERTIES))
+    public static final Supplier<Item> SOUR_CREAM = ModItemRegistration.start().register("sour_cream", () -> new DrinkableItem(SOUR_CREAM_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
             .complete();
@@ -179,6 +201,16 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
+    public static final Supplier<Item> TACO_BEEF = ModItemRegistration.start().register("taco_beef", () -> new Item(TACO_BEEF_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> TACO_CHICKEN = ModItemRegistration.start().register("taco_chicken", () -> new Item(TACO_CHICKEN_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
     public static final Supplier<Item> TORTILLA_DOUGH = ModItemRegistration.start().register("tortilla_dough", () -> new Item(TORTILLA_DOUGH_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
@@ -199,12 +231,12 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
-    public static final Supplier<Item> NACHOS = ModItemRegistration.start().register("nachos", () -> new Item(NACHO_PROPERTIES))
+    public static final Supplier<Item> NACHOS = ModItemRegistration.start().register("nachos", () -> new ConsumableItem(NACHO_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
             .complete();
 
-    public static final Supplier<Item> CHEESY_FIESTA_POTATOES = ModItemRegistration.start().register("cheesy_fiesta_potatoes", () -> new Item(CHEESY_FIESTA_POTATOES_PROPERTIES))
+    public static final Supplier<Item> CHEESY_FIESTA_POTATOES = ModItemRegistration.start().register("cheesy_fiesta_potatoes", () -> new ConsumableItem(CHEESY_FIESTA_POTATOES_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
             .complete();

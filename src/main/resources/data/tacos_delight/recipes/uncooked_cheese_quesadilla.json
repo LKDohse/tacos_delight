@@ -1,6 +1,22 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tacos_delight:item/uncooked_cheese_quesadilla"
-  }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tacos_delight:taco_chicken"
+    },
+    {
+      "item": "tacos_delight:flour_tortilla"
+    },
+    {
+      "item": "tacos_delight:shredded_cheese"
+    },
+    {
+      "item": "tacos_delight:sour_cream"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:uncooked_chicken_quesadilla",
+    "count": 1
+  },
+  "experience": 2.0
 }
