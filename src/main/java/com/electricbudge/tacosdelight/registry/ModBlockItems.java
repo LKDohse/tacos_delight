@@ -19,42 +19,42 @@ public class ModBlockItems {
 
 
     //TACO BOXES
-//    public static final Supplier<Block> BEEF_TACO_BOX_BLOCK = ModBlockRegistration.start()
-//            .register("beef_taco_box_block",
-//                    () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.BEEF))
-//            .withCreativeTab()
-//            .withIngredientTab()
-//            .complete();
-//
-//    public static final Supplier<Block> CHICKEN_TACO_BOX_BLOCK = ModBlockRegistration.start().register("chicken_taco_box_block",
-//            () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.CHICKEN))
-//            .withCreativeTab()
-//            .withIngredientTab()
-//            .complete();
-//
-//    public static final Supplier<Block> POTATO_TACO_BOX_BLOCK = ModBlockRegistration.start().register("potato_taco_box",
-//            () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.POTATO))
-//            .withCreativeTab()
-//            .withIngredientTab()
-//            .complete();
+    public static final Supplier<Block> BEEF_TACO_BOX_BLOCK = ModBlockRegistration.start()
+            .register("beef_taco_box_block",
+                    () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.BEEF))
+            .withCreativeTab()
+            .withFoodTab()
+            .complete();
+
+    public static final Supplier<Block> CHICKEN_TACO_BOX_BLOCK = ModBlockRegistration.start().register("chicken_taco_box_block",
+            () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.CHICKEN))
+            .withCreativeTab()
+            .withFoodTab()
+            .complete();
+
+    public static final Supplier<Block> POTATO_TACO_BOX_BLOCK = ModBlockRegistration.start().register("potato_taco_box_block",
+            () -> new TacoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.POTATO))
+            .withCreativeTab()
+            .withFoodTab()
+            .complete();
 
     //BURRITO BOXES
     public static final Supplier<Block> BEEF_BURRITO_BOX_BLOCK = ModBlockRegistration.start().register("beef_burrito_box_block",
             () -> new BurritoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.BEEF))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Block> CHICKEN_BURRITO_BOX_BLOCK = ModBlockRegistration.start().register("chicken_burrito_box_block",
             () -> new BurritoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.CHICKEN))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Block> POTATO_BURRITO_BOX_BLOCK = ModBlockRegistration.start().register("potato_burrito_box_block",
             () -> new BurritoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.POTATO))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     //MISC

@@ -21,7 +21,7 @@ public class ModBlockRegistration {
         return this;
     }
 
-    public ModBlockRegistration withIngredientTab(){
+    public ModBlockRegistration withFoodTab(){
         ModBlockItems.FOOD_TAB_ITEMS.add(BLOCK);
         return this;
     }

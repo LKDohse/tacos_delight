@@ -83,6 +83,7 @@ public class ModItems {
     public static final FoodProperties UNFINISHED_FOOD_PROPERTIES = new FoodProperties.Builder().nutrition(3).saturationMod(1.2F).build();
 
     //Uncategorized
+    public static final Item.Properties CARDBOARD_TRAY_PROPERTIES = new Item.Properties();
     public static final Item.Properties TACO_SEASONING_PROPERTIES = new Item.Properties().food(new FoodProperties.Builder().nutrition(1).fast().effect(new MobEffectInstance(MobEffects.CONFUSION, 10), 0.50F).build());
 
     //Basic Ingredients
@@ -133,9 +134,9 @@ public class ModItems {
     public static final Item.Properties BEEF_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.BEEF));
 
     //Taco Boxes
-    //public static final Item.Properties BEEF_TACO_BOX_PROPERTIES = new Item.Properties();
-    //public static final Item.Properties CHICKEN_TACO_BOX_PROPERTIES = new Item.Properties();
-    //public static final Item.Properties POTATO_TACO_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties BEEF_TACO_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties CHICKEN_TACO_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties POTATO_TACO_BOX_PROPERTIES = new Item.Properties();
 
     //Burrito Boxes
     public static final Item.Properties BEEF_BURRITO_BOX_PROPERTIES = new Item.Properties();
@@ -143,6 +144,12 @@ public class ModItems {
     public static final Item.Properties POTATO_BURRITO_BOX_PROPERTIES = new Item.Properties();
 
     // Item Registration
+    public static final Supplier<Item> CARDBOARD_TRAY = ModItemRegistration.start().register("cardboard_tray",
+                    () -> new Item(CARDBOARD_TRAY_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
     public static final Supplier<Item> TACO_SEASONING = ModItemRegistration.start().register("taco_seasoning",
         () -> new Item(TACO_SEASONING_PROPERTIES))
             .withCreativeTab()
@@ -317,6 +324,18 @@ public class ModItems {
             .complete();
 
     public static final Supplier<Item> CHICKEN_BURRITO_BOX = ModItemRegistration.start().register("chicken_burrito_box", () -> new BlockItem(ModBlockItems.CHICKEN_BURRITO_BOX_BLOCK.get(),CHICKEN_BURRITO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> POTATO_TACO_BOX = ModItemRegistration.start().register("potato_taco_box", () -> new BlockItem(ModBlockItems.POTATO_TACO_BOX_BLOCK.get(),POTATO_TACO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> BEEF_TACO_BOX = ModItemRegistration.start().register("beef_taco_box", () -> new BlockItem(ModBlockItems.BEEF_TACO_BOX_BLOCK.get(),BEEF_TACO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> CHICKEN_TACO_BOX = ModItemRegistration.start().register("chicken_taco_box", () -> new BlockItem(ModBlockItems.CHICKEN_TACO_BOX_BLOCK.get(),CHICKEN_TACO_BOX_PROPERTIES))
             .withCreativeTab()
             .complete();
 }
