@@ -42,6 +42,21 @@ public class ModItems {
         };
     }
 
+    public static Supplier<Item> getCrunchwrap(FillingType filling){
+        return switch (filling){
+            case BEEF -> BEEF_CRUNCHWRAP;
+            default -> CHICKEN_CRUNCHWRAP;
+        };
+    }
+
+    public static Supplier<Item> getQuesadilla(FillingType filling){
+        return switch (filling){
+            case BEEF -> BEEF_QUESADILLA;
+            case CHICKEN -> CHICKEN_QUESADILLA;
+            default -> CHEESE_QUESADILLA;
+        };
+    }
+
     public enum FillingType{
         BEEF,
         CHICKEN,
@@ -76,6 +91,12 @@ public class ModItems {
         return builder.build();
     }
 
+    public static FoodProperties BuildCrunchwrapProperties(FillingType type){
+        var builder = new FoodProperties.Builder().nutrition(16).saturationMod(18F);
+        builder.effect(new MobEffectInstance(GetFillingEffect(type), 50), 1F);
+        return builder.build();
+    }
+
     public static final FoodProperties BASIC_INGREDIENT_PROPERTIES = new FoodProperties.Builder().nutrition(1).fast().build();
     public static final FoodProperties RAW_INGREDIENT_PROPERTIES = new FoodProperties.Builder().nutrition(2).saturationMod(1.2F).effect(new MobEffectInstance(MobEffects.HUNGER), 0.30F).build();
     public static final FoodProperties RAW_MEAT_PROPERTIES = new FoodProperties.Builder().nutrition(2).meat().saturationMod(1.2F).effect(new MobEffectInstance(MobEffects.HUNGER), 0.30F).build();
@@ -91,6 +112,7 @@ public class ModItems {
     public static final Item.Properties DRIED_CHILI_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties DRIED_ONION_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties FLOUR_TORTILLA_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
+    public static final Item.Properties HARD_FLOUR_TORTILLA_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties NACHO_CHEESE_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
     public static final Item.Properties SHREDDED_CHEESE_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
     public static final Item.Properties DICED_POTATO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES);
@@ -113,6 +135,8 @@ public class ModItems {
     public static final Item.Properties UNCOOKED_CHEESE_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
     public static final Item.Properties UNCOOKED_CHICKEN_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
     public static final Item.Properties UNCOOKED_BEEF_QUESADILLA_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
+    public static final Item.Properties UNCOOKED_CHICKEN_CRUNCHWRAP_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
+    public static final Item.Properties UNCOOKED_BEEF_CRUNCHWRAP_PROPERTIES = new Item.Properties().food(UNFINISHED_FOOD_PROPERTIES);
 
     //Sides
     public static final Item.Properties NACHO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.BOWL).stacksTo(16);
@@ -133,6 +157,10 @@ public class ModItems {
     public static final Item.Properties CHICKEN_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.CHICKEN));
     public static final Item.Properties BEEF_QUESADILLA_PROPERTIES = new Item.Properties().food(BuildQuesadillaProperties(FillingType.BEEF));
 
+    //Crunchwraps
+    public static final Item.Properties CHICKEN_CRUNCHWRAP_PROPERTIES = new Item.Properties().food(BuildCrunchwrapProperties(FillingType.CHICKEN));
+    public static final Item.Properties BEEF_CRUNCHWRAP_PROPERTIES = new Item.Properties().food(BuildCrunchwrapProperties(FillingType.BEEF));
+
     //Taco Boxes
     public static final Item.Properties BEEF_TACO_BOX_PROPERTIES = new Item.Properties();
     public static final Item.Properties CHICKEN_TACO_BOX_PROPERTIES = new Item.Properties();
@@ -142,6 +170,10 @@ public class ModItems {
     public static final Item.Properties BEEF_BURRITO_BOX_PROPERTIES = new Item.Properties();
     public static final Item.Properties CHICKEN_BURRITO_BOX_PROPERTIES = new Item.Properties();
     public static final Item.Properties POTATO_BURRITO_BOX_PROPERTIES = new Item.Properties();
+
+    //Cravings Boxes
+    public static final Item.Properties BEEF_CRAVINGS_BOX_PROPERTIES = new Item.Properties();
+    public static final Item.Properties CHICKEN_CRAVINGS_BOX_PROPERTIES = new Item.Properties();
 
     // Item Registration
     public static final Supplier<Item> CARDBOARD_TRAY = ModItemRegistration.start().register("cardboard_tray",
@@ -176,6 +208,12 @@ public class ModItems {
 
     public static final Supplier<Item> FLOUR_TORTILLA = ModItemRegistration.start().register("flour_tortilla",
             () -> new Item(FLOUR_TORTILLA_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> HARD_FLOUR_TORTILLA = ModItemRegistration.start().register("hard_flour_tortilla",
+                    () -> new Item(HARD_FLOUR_TORTILLA_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
             .complete();
@@ -260,6 +298,16 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
+    public static final Supplier<Item> UNCOOKED_CHICKEN_CRUNCHWRAP = ModItemRegistration.start().register("uncooked_chicken_crunchwrap", () -> new Item(UNCOOKED_CHICKEN_CRUNCHWRAP_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> UNCOOKED_BEEF_CRUNCHWRAP = ModItemRegistration.start().register("uncooked_beef_crunchwrap", () -> new Item(UNCOOKED_BEEF_CRUNCHWRAP_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
     public static final Supplier<Item> NACHOS = ModItemRegistration.start().register("nachos", () -> new ConsumableItem(NACHO_PROPERTIES))
             .withCreativeTab()
             .withIngredientTab()
@@ -315,6 +363,15 @@ public class ModItems {
             .withIngredientTab()
             .complete();
 
+    public static final Supplier<Item> CHICKEN_CRUNCHWRAP = ModItemRegistration.start().register("chicken_crunchwrap", () -> new Item(CHICKEN_CRUNCHWRAP_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> BEEF_CRUNCHWRAP = ModItemRegistration.start().register("beef_crunchwrap", () -> new Item(BEEF_CRUNCHWRAP_PROPERTIES))
+            .withCreativeTab()
+            .withIngredientTab()
+            .complete();
     public static final Supplier<Item> POTATO_BURRITO_BOX = ModItemRegistration.start().register("potato_burrito_box", () -> new BlockItem(ModBlockItems.POTATO_BURRITO_BOX_BLOCK.get(),POTATO_BURRITO_BOX_PROPERTIES))
             .withCreativeTab()
             .complete();
@@ -336,6 +393,14 @@ public class ModItems {
             .complete();
 
     public static final Supplier<Item> CHICKEN_TACO_BOX = ModItemRegistration.start().register("chicken_taco_box", () -> new BlockItem(ModBlockItems.CHICKEN_TACO_BOX_BLOCK.get(),CHICKEN_TACO_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> CHICKEN_CRAVINGS_BOX = ModItemRegistration.start().register("chicken_cravings_box", () -> new BlockItem(ModBlockItems.CHICKEN_CRAVINGS_BOX_BLOCK.get(),CHICKEN_CRAVINGS_BOX_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
+    public static final Supplier<Item> BEEF_CRAVINGS_BOX = ModItemRegistration.start().register("beef_cravings_box", () -> new BlockItem(ModBlockItems.BEEF_CRAVINGS_BOX_BLOCK.get(),BEEF_CRAVINGS_BOX_PROPERTIES))
             .withCreativeTab()
             .complete();
 }

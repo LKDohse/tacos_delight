@@ -1,0 +1,8 @@
+{
+  "type": "casualness_delight:deep_frying",
+  "ingredient": {
+    "item": "tacos_delight:flour_tortilla"
+  },
+  "cookingtime": 200,
+  "result": "tacos_delight:hard_flour_tortilla"
+}

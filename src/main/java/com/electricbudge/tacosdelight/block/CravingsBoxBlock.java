@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -19,45 +20,46 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static com.electricbudge.tacosdelight.registry.ModItems.getBurrito;
+import static com.electricbudge.tacosdelight.registry.ModItems.*;
 
-public class BurritoBoxBlock extends FeastBlock {
-    public static final IntegerProperty BURRITO_SERVINGS = IntegerProperty.create("servings", 0, 5);
+public class CravingsBoxBlock extends FeastBlock {
+    public static final IntegerProperty FOOD_SERVINGS = IntegerProperty.create("servings", 0, 8);
 
     protected static final VoxelShape PLATE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 2.0D, 15.0D);
     protected static final VoxelShape FOOD_SHAPE = Shapes.joinUnoptimized(PLATE_SHAPE, Block.box(2.0D, 2.0D, 2.0D, 14.0D, 4.0D, 14.0D), BooleanOp.OR);
 
     private ModItems.FillingType fillingType;
 
-    public BurritoBoxBlock(Properties properties, ModItems.FillingType fillingType) {
-        super(properties, ModItems.getBurrito(fillingType), true);
+    public CravingsBoxBlock(BlockBehaviour.Properties properties, ModItems.FillingType fillingType){
+        super(properties, ModItems.getCrunchwrap(fillingType), true);
         this.fillingType = fillingType;
-        burritoBoxServings = Arrays.asList(
+        cravingsBoxServings = Arrays.asList(
+                getQuesadilla((this.fillingType)),
+                getTaco((this.fillingType)),
                 getBurrito((this.fillingType)),
+                getCrunchwrap((this.fillingType)),
+                getTaco((this.fillingType)),
+                getQuesadilla((this.fillingType)),
                 getBurrito((this.fillingType)),
-                getBurrito((this.fillingType)),
-                getBurrito((this.fillingType)),
-                getBurrito((this.fillingType))
+                getCrunchwrap((this.fillingType))
         );
     }
 
-
-
-    public List<Supplier<Item>> burritoBoxServings;
+    public List<Supplier<Item>> cravingsBoxServings;
 
     @Override
     public IntegerProperty getServingsProperty() {
-        return BURRITO_SERVINGS;
+        return FOOD_SERVINGS;
     }
 
     @Override
     public int getMaxServings() {
-        return 5;
+        return 8;
     }
 
     @Override
     public ItemStack getServingItem(BlockState state) {
-        return new ItemStack(burritoBoxServings.get(state.getValue(getServingsProperty()) - 1).get());
+        return new ItemStack(cravingsBoxServings.get(state.getValue(getServingsProperty()) - 1).get());
     }
 
     @Override
@@ -67,6 +69,6 @@ public class BurritoBoxBlock extends FeastBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, BURRITO_SERVINGS);
+        builder.add(FACING, FOOD_SERVINGS);
     }
 }

@@ -2,6 +2,7 @@ package com.electricbudge.tacosdelight.registry;
 
 import com.electricbudge.tacosdelight.TacosDelight;
 import com.electricbudge.tacosdelight.block.BurritoBoxBlock;
+import com.electricbudge.tacosdelight.block.CravingsBoxBlock;
 import com.electricbudge.tacosdelight.block.TacoBoxBlock;
 import com.google.common.collect.Sets;
 import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
@@ -53,6 +54,20 @@ public class ModBlockItems {
 
     public static final Supplier<Block> POTATO_BURRITO_BOX_BLOCK = ModBlockRegistration.start().register("potato_burrito_box_block",
             () -> new BurritoBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.POTATO))
+            .withCreativeTab()
+            .withFoodTab()
+            .complete();
+
+
+    public static final Supplier<Block> CHICKEN_CRAVINGS_BOX_BLOCK = ModBlockRegistration.start().register("chicken_cravings_box_block",
+                    () -> new CravingsBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.CHICKEN))
+            .withCreativeTab()
+            .withFoodTab()
+            .complete();
+
+
+    public static final Supplier<Block> BEEF_CRAVINGS_BOX_BLOCK = ModBlockRegistration.start().register("beef_cravings_box_block",
+                    () -> new CravingsBoxBlock(Block.Properties.copy(Blocks.CAKE), ModItems.FillingType.BEEF))
             .withCreativeTab()
             .withFoodTab()
             .complete();

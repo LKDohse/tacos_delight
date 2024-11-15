@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient":
+    {
+      "item": "tacos_delight:uncooked_chicken_crunchwrap"
+    },
+  "result": "tacos_delight:chicken_crunchwrap"
+}

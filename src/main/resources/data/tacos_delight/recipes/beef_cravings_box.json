@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tacos_delight:beef_taco"
+    },
+    {
+      "item": "tacos_delight:beef_taco"
+    },
+    {
+      "item": "tacos_delight:beef_burrito"
+    },
+    {
+      "item": "tacos_delight:beef_burrito"
+    },
+    {
+      "item": "tacos_delight:beef_quesadilla"
+    },
+    {
+      "item": "tacos_delight:beef_quesadilla"
+    },
+    {
+      "item": "tacos_delight:beef_crunchwrap"
+    },
+    {
+      "item": "tacos_delight:beef_crunchwrap"
+    },
+    {
+      "item": "tacos_delight:cardboard_tray"
+    }
+  ],
+  "result": {
+    "item": "tacos_delight:beef_cravings_box",
+    "count": 1
+  },
+  "experience": 8.0
+}
