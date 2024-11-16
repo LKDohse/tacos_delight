@@ -45,5 +45,7 @@
   "item.tacos_delight.uncooked_cheese_quesadilla" : "Uncooked Cheese Quesadilla",
   "item.tacos_delight.uncooked_fiesta_potatoes" : "Uncooked Fiesta Potatoes",
   "item.tacos_delight.diced_tomatoes": "Diced Tomatoes",
+  "block.tacos_delight.cheesy_nacho_platter_block": "Cheesy Nachos BellGrande",
+  "item.tacos_delight.cheesy_nachos_serving": "Cheesy Nachos BellGrande Servings",
   "itemGroup.tacos_delight": "Tacos Delight"
 }

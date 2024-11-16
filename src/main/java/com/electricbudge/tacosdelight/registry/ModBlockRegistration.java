@@ -21,10 +21,6 @@ public class ModBlockRegistration {
         return this;
     }
 
-    public ModBlockRegistration withFoodTab(){
-        ModBlockItems.FOOD_TAB_ITEMS.add(BLOCK);
-        return this;
-    }
 
     public Supplier<Block> complete(){
         return BLOCK;

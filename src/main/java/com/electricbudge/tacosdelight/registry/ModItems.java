@@ -23,6 +23,7 @@ public class ModItems {
     public static final LazyRegistrar<Item> ITEMS = LazyRegistrar.create(BuiltInRegistries.ITEM, TacosDelight.MODID);
     public static LinkedHashSet<Supplier<Item>> CREATIVE_TAB_ITEMS = Sets.newLinkedHashSet();
     public static LinkedHashSet<Supplier<Item>> INGREDIENTS_TAB_ITEMS = Sets.newLinkedHashSet();
+    public static LinkedHashSet<Supplier<Item>> FOOD_TAB_ITEMS = Sets.newLinkedHashSet();
 
     public static Supplier<Item> getTaco(@NotNull FillingType filling){
         return switch (filling) {
@@ -54,6 +55,12 @@ public class ModItems {
             case BEEF -> BEEF_QUESADILLA;
             case CHICKEN -> CHICKEN_QUESADILLA;
             default -> CHEESE_QUESADILLA;
+        };
+    }
+
+    public static Supplier<Item> getNachos(FillingType filling){
+        return switch (filling){
+            default -> CHEESY_NACHOS_SERVING;
         };
     }
 
@@ -94,6 +101,12 @@ public class ModItems {
     public static FoodProperties BuildCrunchwrapProperties(FillingType type){
         var builder = new FoodProperties.Builder().nutrition(16).saturationMod(18F);
         builder.effect(new MobEffectInstance(GetFillingEffect(type), 50), 1F);
+        return builder.build();
+    }
+
+    public static FoodProperties BuildNachoServingProperties(FillingType type){
+        var builder = new FoodProperties.Builder().nutrition(10).saturationMod(10F);
+        builder.effect(new MobEffectInstance(GetFillingEffect(type), 50), 0.30F);
         return builder.build();
     }
 
@@ -142,6 +155,9 @@ public class ModItems {
     public static final Item.Properties NACHO_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.BOWL).stacksTo(16);
     public static final Item.Properties CHEESY_FIESTA_POTATOES_PROPERTIES = new Item.Properties().food(BASIC_INGREDIENT_PROPERTIES).craftRemainder(Items.BOWL).stacksTo(16);
 
+    //Special Nachos
+    public static final Item.Properties NACHO_PLATTER_SERVING_PROPERTIES = new Item.Properties().food(BuildNachoServingProperties(FillingType.CHEESE)).craftRemainder(Items.BOWL).stacksTo(4);
+
     //Tacos
     public static final Item.Properties POTATO_TACO_PROPERTIES = new Item.Properties().food(BuildTacoProperties(FillingType.POTATO));
     public static final Item.Properties CHICKEN_TACO_PROPERTIES = new Item.Properties().food(BuildTacoProperties(FillingType.CHICKEN));
@@ -175,203 +191,209 @@ public class ModItems {
     public static final Item.Properties BEEF_CRAVINGS_BOX_PROPERTIES = new Item.Properties();
     public static final Item.Properties CHICKEN_CRAVINGS_BOX_PROPERTIES = new Item.Properties();
 
+    //Nacho Platters
+    public static final Item.Properties CHEESY_NACHO_PLATTER_PROPERTIES = new Item.Properties();
+
     // Item Registration
     public static final Supplier<Item> CARDBOARD_TRAY = ModItemRegistration.start().register("cardboard_tray",
                     () -> new Item(CARDBOARD_TRAY_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> TACO_SEASONING = ModItemRegistration.start().register("taco_seasoning",
         () -> new Item(TACO_SEASONING_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> DICED_TOMATOES = ModItemRegistration.start().register("diced_tomatoes",
             () -> new Item(DICED_TOMATOES_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> DRIED_CHILI = ModItemRegistration.start().register("dried_chili",
             () -> new Item(DRIED_CHILI_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> DRIED_ONION = ModItemRegistration.start().register("dried_onion",
             () -> new Item(DRIED_ONION_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> FLOUR_TORTILLA = ModItemRegistration.start().register("flour_tortilla",
             () -> new Item(FLOUR_TORTILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> HARD_FLOUR_TORTILLA = ModItemRegistration.start().register("hard_flour_tortilla",
                     () -> new Item(HARD_FLOUR_TORTILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> NACHO_CHEESE = ModItemRegistration.start().register("nacho_cheese", () -> new DrinkableItem(NACHO_CHEESE_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> SHREDDED_CHEESE = ModItemRegistration.start().register("shredded_cheese", () -> new Item(SHREDDED_CHEESE_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> DICED_POTATO = ModItemRegistration.start().register("diced_potato", () -> new Item(DICED_POTATO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> SOUR_CREAM = ModItemRegistration.start().register("sour_cream", () -> new DrinkableItem(SOUR_CREAM_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> RAW_TORTILLA_CHIPS = ModItemRegistration.start().register("raw_tortilla_chips", () -> new Item(RAW_TORTILLA_CHIPS_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> TORTILLA_CHIPS = ModItemRegistration.start().register("tortilla_chips", () -> new Item(TORTILLA_CHIPS_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_FIESTA_POTATOES = ModItemRegistration.start().register("uncooked_fiesta_potatoes", () -> new Item(UNCOOKED_FIESTA_POTATOES_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> FRIED_FIESTA_POTATOES = ModItemRegistration.start().register("fried_fiesta_potatoes", () -> new Item(FRIED_FIESTA_POTATOES_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> RAW_TACO_BEEF = ModItemRegistration.start().register("raw_taco_beef", () -> new Item(RAW_TACO_BEEF_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> RAW_TACO_CHICKEN = ModItemRegistration.start().register("raw_taco_chicken", () -> new Item(RAW_TACO_CHICKEN_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> TACO_BEEF = ModItemRegistration.start().register("taco_beef", () -> new Item(TACO_BEEF_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> TACO_CHICKEN = ModItemRegistration.start().register("taco_chicken", () -> new Item(TACO_CHICKEN_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> TORTILLA_DOUGH = ModItemRegistration.start().register("tortilla_dough", () -> new Item(TORTILLA_DOUGH_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_CHEESE_QUESADILLA = ModItemRegistration.start().register("uncooked_cheese_quesadilla", () -> new Item(UNCOOKED_CHEESE_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_CHICKEN_QUESADILLA = ModItemRegistration.start().register("uncooked_chicken_quesadilla", () -> new Item(UNCOOKED_CHICKEN_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_BEEF_QUESADILLA = ModItemRegistration.start().register("uncooked_beef_quesadilla", () -> new Item(UNCOOKED_BEEF_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_CHICKEN_CRUNCHWRAP = ModItemRegistration.start().register("uncooked_chicken_crunchwrap", () -> new Item(UNCOOKED_CHICKEN_CRUNCHWRAP_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> UNCOOKED_BEEF_CRUNCHWRAP = ModItemRegistration.start().register("uncooked_beef_crunchwrap", () -> new Item(UNCOOKED_BEEF_CRUNCHWRAP_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> NACHOS = ModItemRegistration.start().register("nachos", () -> new ConsumableItem(NACHO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
             .complete();
 
     public static final Supplier<Item> CHEESY_FIESTA_POTATOES = ModItemRegistration.start().register("cheesy_fiesta_potatoes", () -> new ConsumableItem(CHEESY_FIESTA_POTATOES_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .complete();
+
+    public static final Supplier<Item> CHEESY_NACHOS_SERVING = ModItemRegistration.start().register("cheesy_nachos_serving", () -> new ConsumableItem(NACHO_PLATTER_SERVING_PROPERTIES))
+            .withCreativeTab()
             .complete();
 
     public static final Supplier<Item> POTATO_TACO = ModItemRegistration.start().register("potato_taco", () -> new Item(POTATO_TACO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> CHICKEN_TACO = ModItemRegistration.start().register("chicken_taco", () -> new Item(CHICKEN_TACO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> BEEF_TACO = ModItemRegistration.start().register("beef_taco", () -> new Item(BEEF_TACO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> POTATO_BURRITO = ModItemRegistration.start().register("potato_burrito", () -> new Item(POTATO_BURRITO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> CHICKEN_BURRITO = ModItemRegistration.start().register("chicken_burrito", () -> new Item(CHICKEN_BURRITO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> BEEF_BURRITO = ModItemRegistration.start().register("beef_burrito", () -> new Item(BEEF_BURRITO_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> CHEESE_QUESADILLA = ModItemRegistration.start().register("cheese_quesadilla", () -> new Item(CHEESE_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> CHICKEN_QUESADILLA = ModItemRegistration.start().register("chicken_quesadilla", () -> new Item(CHICKEN_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> BEEF_QUESADILLA = ModItemRegistration.start().register("beef_quesadilla", () -> new Item(BEEF_QUESADILLA_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> CHICKEN_CRUNCHWRAP = ModItemRegistration.start().register("chicken_crunchwrap", () -> new Item(CHICKEN_CRUNCHWRAP_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
 
     public static final Supplier<Item> BEEF_CRUNCHWRAP = ModItemRegistration.start().register("beef_crunchwrap", () -> new Item(BEEF_CRUNCHWRAP_PROPERTIES))
             .withCreativeTab()
-            .withIngredientTab()
+            .withFoodTab()
             .complete();
+
     public static final Supplier<Item> POTATO_BURRITO_BOX = ModItemRegistration.start().register("potato_burrito_box", () -> new BlockItem(ModBlockItems.POTATO_BURRITO_BOX_BLOCK.get(),POTATO_BURRITO_BOX_PROPERTIES))
             .withCreativeTab()
             .complete();
@@ -403,4 +425,9 @@ public class ModItems {
     public static final Supplier<Item> BEEF_CRAVINGS_BOX = ModItemRegistration.start().register("beef_cravings_box", () -> new BlockItem(ModBlockItems.BEEF_CRAVINGS_BOX_BLOCK.get(),BEEF_CRAVINGS_BOX_PROPERTIES))
             .withCreativeTab()
             .complete();
+
+    public static final Supplier<Item> CHEESY_NACHO_PLATTER = ModItemRegistration.start().register("cheesy_nacho_platter", () -> new BlockItem(ModBlockItems.CHEESY_NACHO_PLATTER_BLOCK.get(), CHEESY_NACHO_PLATTER_PROPERTIES))
+            .withCreativeTab()
+            .complete();
+
 }

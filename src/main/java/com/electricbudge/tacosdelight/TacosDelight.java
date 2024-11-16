@@ -18,5 +18,6 @@ public class TacosDelight implements ModInitializer {
 		ModItems.ITEMS.register();
 		ModBlockItems.BLOCKS.register();
 		ModCreativeTabs.CREATIVE_TABS.register();
+		ModCreativeTabs.RegisterItemsInFoodTab();
 	}
 }

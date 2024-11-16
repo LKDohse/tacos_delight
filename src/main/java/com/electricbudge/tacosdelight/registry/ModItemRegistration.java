@@ -25,6 +25,11 @@ public class ModItemRegistration {
         ModItems.INGREDIENTS_TAB_ITEMS.add(ITEM);
         return this;
     }
+
+    public ModItemRegistration withFoodTab(){
+        ModItems.FOOD_TAB_ITEMS.add(ITEM);
+        return this;
+    }
     
     public Supplier<Item> complete(){
         return ITEM; 

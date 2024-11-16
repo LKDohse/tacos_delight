@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tacos_delight:item/cheesy_nachos_serving"
+  }
+}
